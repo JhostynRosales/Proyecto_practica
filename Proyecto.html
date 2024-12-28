@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla de Bloqueo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .lock-screen {
+            background: #000;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .lock-screen img {
+            width: auto;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .lock-screen h2 {
+            margin-bottom: 15px;
+        }
+
+        .lock-screen input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .lock-screen button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .lock-screen button:hover {
+            background-color: #ccc;
+        }
+
+        .lock-screen .message {
+            margin-top: 15px;
+            font-size: 14px;
+            color: red;
+        }
+
+        .lock-screen a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .lock-screen a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="lock-screen">
+        <img src="Logo.jpg" alt="Logo">
+        <h2>Introduce el Código de Acceso</h2>
+        <input type="text" id="accessCode" placeholder="Código de acceso">
+        <button onclick="validateCode()">Enviar</button>
+        <p class="message" id="message"></p>
+        <p>Para obtener un código de acceso, sigue nuestra cuenta de Instagram: 
+            <a href="https://www.instagram.com/orbislux/" target="_blank">@orbislux</a>
+        </p>
+    </div>
+
+    <script>
+        // Lista simulada de códigos válidos (en la práctica, estos estarían en el servidor)
+        const validCodes = ["ABC123", "XYZ789", "TEST456"];
+
+        // Función para validar el código de acceso
+        function validateCode() {
+            const userInput = document.getElementById('accessCode').value;
+            const message = document.getElementById('message');
+
+            if (validCodes.includes(userInput)) {
+                message.style.color = 'green';
+                message.textContent = 'Acceso permitido. Redirigiendo...';
+                setTimeout(() => {
+                    window.location.href = 'pagina_principal.html'; // Cambiar por la URL deseada
+                }, 2000);
+            } else {
+                message.style.color = 'red';
+                message.textContent = 'Código incorrecto. Por favor, inténtalo de nuevo.';
+            }
+        }
+    </script>
+</body>
+</html>
